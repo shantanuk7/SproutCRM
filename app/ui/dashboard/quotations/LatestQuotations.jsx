@@ -1,8 +1,8 @@
-"use client"
-import { useState, useEffect } from "react";
+// "use client"
+// import { useState, useEffect } from "react";
 import styles from "./quotations.module.css";
 
-const LatestQuotations = ({}) => {
+const LatestQuotations = () => {
     // const [quotations, setQuotations] = useState([]);
   
     // useEffect(() => {
