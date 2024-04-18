@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+const { Schema } = mongoose;
 
 const userSchema = new mongoose.Schema(
   {
@@ -73,6 +74,55 @@ const productSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
+const quotationSchema = new mongoose.Schema(
+  {
+    clientName: {
+      type: String,
+      required: true,
+    },
+    companyName: {
+      type: String,
+      required: true,
+    },
+    email: {
+      type: String,
+      required: true,
+    },
+    phone: {
+      type: String,
+      required: true,
+    },
+    items: [
+      {
+        product: {
+          type: Schema.Types.ObjectId,
+          ref: 'Product',
+          required: true,
+        },
+        quantity: {
+          type: Number,
+          required: true,
+          min: 1,
+        },
+      },
+    ],
+  },
+  { timestamps: true }
+);
+
+const clientSchema = new mongoose.Schema({
+  clientName: {
+    type: String,
+    required: true,
+  },
+  companyName: String,
+  email: String,
+  phone: String,
+  address: String,
+  notes: String,
+}, { timestamps: true });
+
+export const Client = mongoose.models.Client || mongoose.model("Client", clientSchema);
 export const User = mongoose.models.User || mongoose.model("User", userSchema);
-export const Product =
-  mongoose.models.Product || mongoose.model("Product", productSchema);
+export const Product = mongoose.models.Product || mongoose.model("Product", productSchema);
+export const Quotation = mongoose.models.Quotation || mongoose.model("Quotation", quotationSchema);

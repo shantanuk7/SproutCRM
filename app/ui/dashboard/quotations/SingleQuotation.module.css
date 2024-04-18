@@ -1,0 +1,19 @@
+.container {
+    margin: 2rem;
+  }
+  
+  .quotationTable {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  .quotationTable th,
+  .quotationTable td {
+    padding: 0.5rem 1rem;
+    border: 1px solid #ddd;
+    text-align: left;
+  }
+  
+  .quotationTable thead th {
+    background-color: #294a5d;
+  }

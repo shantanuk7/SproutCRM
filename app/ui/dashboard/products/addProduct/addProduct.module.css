@@ -32,10 +32,11 @@
 
 .form button{
   width: 100%;
-  padding: 30px;
+  padding: 20px;
   background-color: teal;
   color: var(--text);
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  margin: 10px;
 }

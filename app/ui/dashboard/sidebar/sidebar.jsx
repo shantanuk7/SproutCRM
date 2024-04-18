@@ -12,6 +12,8 @@ import {
   MdOutlineSettings,
   MdHelpCenter,
   MdLogout,
+  MdGroups,
+  MdInsertDriveFile, 
 } from "react-icons/md";
 import { auth, signOut } from "@/app/auth";
 
@@ -35,32 +37,37 @@ const menuItems = [
         icon: <MdShoppingBag />,
       },
       {
-        title: "Transactions",
-        path: "/dashboard/transactions",
-        icon: <MdAttachMoney />,
+        title: "Clients",
+        path: "/dashboard/clients",
+        icon: <MdGroups />,
       },
+      {
+        title: "Quotations",
+        path: "/dashboard/quotations",
+        icon: <MdInsertDriveFile />,
+      }
     ],
   },
-  {
-    title: "Analytics",
-    list: [
-      {
-        title: "Revenue",
-        path: "/dashboard/revenue",
-        icon: <MdWork />,
-      },
-      {
-        title: "Reports",
-        path: "/dashboard/reports",
-        icon: <MdAnalytics />,
-      },
-      {
-        title: "Teams",
-        path: "/dashboard/teams",
-        icon: <MdPeople />,
-      },
-    ],
-  },
+  // {
+  //   title: "Analytics",
+  //   list: [
+  //     {
+  //       title: "Revenue",
+  //       path: "/dashboard/revenue",
+  //       icon: <MdWork />,
+  //     },
+  //     {
+  //       title: "Reports",
+  //       path: "/dashboard/reports",
+  //       icon: <MdAnalytics />,
+  //     },
+  //     {
+  //       title: "Teams",
+  //       path: "/dashboard/teams",
+  //       icon: <MdPeople />,
+  //     },
+  //   ],
+  // },
   {
     title: "User",
     list: [
@@ -85,7 +92,7 @@ const Sidebar = async () => {
       <div className={styles.user}>
         <Image
           className={styles.userImage}
-          src={user.img || "/noavatar.png"}
+          src={user.img || "/sproutcrm.png"}
           alt=""
           width="50"
           height="50"

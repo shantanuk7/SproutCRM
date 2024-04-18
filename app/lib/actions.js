@@ -6,6 +6,8 @@ import { connectToDB } from "./utils";
 import { redirect } from "next/navigation";
 import bcrypt from "bcrypt";
 import { signIn } from "../auth";
+import { Quotation } from "./models";
+import { Client } from "./models";
 
 export const addUser = async (formData) => {
   const { username, email, password, phone, address, isAdmin, isActive } =
@@ -16,7 +18,7 @@ export const addUser = async (formData) => {
 
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
-
+    
     const newUser = new User({
       username,
       email,
@@ -165,4 +167,76 @@ export const authenticate = async (prevState, formData) => {
     }
     throw err;
   }
+};
+
+
+export const addQuotation = async (formData) => {
+  try {
+    await connectToDB();
+    console.log("\n=====Got request to create quote for this data: ====\n"+ formData);
+    const newQuotation = new Quotation(formData);
+    await newQuotation.save();
+  } catch (error) {
+    console.error("Error adding quotation:", error);
+    throw new Error("Failed to create quotation!");
+  }
+
+  revalidatePath("/dashboard/quotations");
+  redirect("/dashboard/quotations");
+};
+
+export const deleteQuote = async (formData) => {
+  const { id } = Object.fromEntries(formData);
+
+  try {
+    connectToDB();
+    await Quotation.findByIdAndDelete(id);
+  } catch (err) {
+    console.log(err);
+    throw new Error("Failed to delete quotation!");
+  }
+
+  revalidatePath("/dashboard/quotations");
+};
+
+
+export const addClient = async (formData) => {
+
+  const { clientName, companyName, email, phone, address, notes } = Object.fromEntries(formData);
+  console.log("\n\n\n\n========Got form data:============\n" + clientName, companyName, email, phone, address, notes );
+  try {
+    await connectToDB();
+
+    const newClient = new Client({
+      clientName,
+      companyName,
+      email,
+      phone,
+      address,
+      notes,
+    });
+
+    await newClient.save();
+  } catch (err) {
+    console.log(err);
+    throw new Error("Failed to add client!");
+  }
+
+  revalidatePath("/dashboard/clients");
+  redirect("/dashboard/clients");
+};
+
+
+export const deleteClient = async (formData) => {
+  const { id } = Object.fromEntries(formData);
+
+  try {
+    await connectToDB();
+    await Client.findByIdAndDelete(id);
+  } catch (err) {
+    console.log(err);
+    throw new Error("Failed to delete client!");
+  }
+
+  revalidatePath("/dashboard/clients");
 };
