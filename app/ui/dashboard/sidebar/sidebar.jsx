@@ -72,11 +72,6 @@ const menuItems = [
     title: "User",
     list: [
       {
-        title: "Settings",
-        path: "/dashboard/settings",
-        icon: <MdOutlineSettings />,
-      },
-      {
         title: "Help",
         path: "/dashboard/help",
         icon: <MdHelpCenter />,
@@ -109,8 +104,18 @@ const Sidebar = async () => {
             {cat.list.map((item) => (
               <MenuLink item={item} key={item.title} />
             ))}
+
           </li>
         ))}
+        <li>
+            <MenuLink item={
+                {
+                  title: "Settings",
+                  path: `/dashboard/settings/${user.username}`,
+                  icon: <MdOutlineSettings />,
+                }}
+            />
+        </li>
       </ul>
       <form
         action={async () => {
