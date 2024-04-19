@@ -1,7 +1,4 @@
-"use client"
-
-import { useState } from "react";
-import styles from "@/app/ui/dashboard/Help/Help.module.css"
+import styles from "@/app/ui/dashboard/Help/Help.module.css";
 
 import React from "react";
 
@@ -36,7 +33,7 @@ const Help = () => {
         <h3 className={styles.faqQuestion}>Who can use Sprout CRM?</h3>
         <p className={styles.faqAnswer}>
           Sprout CRM is suitable for businesses of all sizes, from startups and
-          freelancers to established companies. It's a great solution for
+          freelancers to established companies. It is a great solution for
           businesses that need a simple and effective way to manage their
           customer interactions.
         </p>
@@ -44,10 +41,7 @@ const Help = () => {
       <div className={styles.faqItem}>
         <h3 className={styles.faqQuestion}>Is Sprout CRM free to use?</h3>
         <p className={styles.faqAnswer}>
-          (Replace with your pricing information. Here's an example) Sprout CRM
-          offers a free trial plan with limited features. Paid plans with
-          additional features and storage are also available. Please refer to
-          our pricing page for more details.
+          Sprout CRM offers a free trial plan with limited features. Paid plans with additional features and storage are also available. Please refer to our pricing page for more details.
         </p>
       </div>
     </div>
